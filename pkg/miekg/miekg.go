@@ -409,6 +409,8 @@ func DoLookupWorker(udp *dns.Client, tcp *dns.Client, conn *dns.Conn, q Question
 
 func (s *Lookup) tracedRetryingLookup(q Question, nameServer string, recursive bool) (Result, zdns.Trace, zdns.Status, error) {
 
+	recursive = false
+
 	res, status, try, err := s.retryingLookup(q, nameServer, recursive)
 
 	trace := make([]interface{}, 0)
